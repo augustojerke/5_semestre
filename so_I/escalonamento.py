@@ -1,3 +1,5 @@
+#Augusto, Fabricio, Lorenzo
+
 import random
 
 class Aptos:
@@ -194,9 +196,10 @@ def main():
                if primeiro_processo["voltaParaApto"] == 1:
                     tabelaAptos.append(Aptos(processos[0].pid, primeiro_processo["tempoSaida"], 0, 0, processos[0].cpu))
                else:
-                    novo_processo = buscar_novo_processo(processos)
-                    tabelaAptos.append(Aptos(novo_processo.pid, primeiro_processo["tempoSaida"], 0, 0, processos[0].cpu))
-                    aloca_processo_cpu_e_adiciona_apto(novo_processo, tabelaCpu, novo_processo.time_admitted, quantum, processos, tabelaAptos)                
+                    novo_processo = buscar_proximo_apto(tabelaAptos)
+                    if novo_processo is None:
+                        tabelaAptos.append(Aptos(novo_processo.pid, primeiro_processo["tempoSaida"], 0, 0, processos[0].cpu))
+                        aloca_processo_cpu_e_adiciona_apto(novo_processo, tabelaCpu, novo_processo.time_admitted, quantum, processos, tabelaAptos)                
 
         proximo_apto = buscar_proximo_apto(tabelaAptos)
         if proximo_apto != False:
@@ -214,5 +217,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-
-#FALTA ARRUMAR PROBLEMA DO ULTIMO NUMERO VOLTAR PARA A FILA DE APTO MESMO NAO PRECISANDO

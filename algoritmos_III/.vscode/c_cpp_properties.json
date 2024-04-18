@@ -11,7 +11,8 @@
       "intelliSenseMode": "windows-gcc-x64",
       "compilerArgs": [
         ""
-      ]
+      ],
+      "mergeConfigurations": true
     }
   ],
   "version": 4
