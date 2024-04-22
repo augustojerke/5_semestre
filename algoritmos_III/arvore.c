@@ -105,6 +105,22 @@ void inOrderR(No *sraiz)
     }
 }
 
+void posOrdem(No *sraiz)
+{
+    if(sraiz == NULL) return;
+	inOrderR(sraiz->esquerda);
+	inOrderR(sraiz->direita);
+	printf("%s ", sraiz->piloto.nome);
+}
+
+void preOrder(No *sraiz)
+{
+    if(sraiz == NULL) return;
+    printf("%s ", sraiz->piloto.nome);
+	inOrderR(sraiz->esquerda);
+	inOrderR(sraiz->direita);
+}
+
 void imprimirArvore(No *raiz, int nivel) {
     if (raiz == NULL)
         return;
@@ -196,9 +212,17 @@ int main(){
             else
                printf("\n-- Piloto nao existe.");
             break;
-         case 4:
+        case 4:
          	system("cls");
          	inOrderR(arvore->raiz);
+         	break;
+        case 5:
+         	system("cls");
+         	preOrder(arvore->raiz);
+         	break;
+         case 6:
+         	system("cls");
+         	posOrdem(arvore->raiz);
          	break;
          case 7: 
             system("cls");
